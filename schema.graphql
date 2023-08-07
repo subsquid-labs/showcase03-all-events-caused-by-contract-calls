@@ -1,0 +1,21 @@
+type CallToAave @entity {
+  id: ID!
+  block: Int! @index
+  hash: String! @index
+  from: String! @index
+  to: String @index
+  value: BigInt!
+  sighash: String! @index
+  events: [EventCausedByAaveCall!] @derivedFrom(field: "call")
+}
+
+type EventCausedByAaveCall @entity {
+  id: ID!
+  call: CallToAave!
+  address: String! @index
+  topic0: String @index
+  topic1: String @index
+  topic2: String @index
+  topic3: String @index
+  data: String!
+}
