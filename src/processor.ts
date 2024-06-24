@@ -1,4 +1,3 @@
-import {lookupArchive} from '@subsquid/archive-registry'
 import {
     BlockHeader,
     DataHandlerContext,
@@ -12,7 +11,7 @@ export const AAVE_CONTRACT = '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9'
 
 export const processor = new EvmBatchProcessor()
     .setDataSource({
-        archive: lookupArchive('eth-mainnet'),
+        archive: 'https://v2.archive.subsquid.io/network/ethereum-mainnet',
     })
     .setBlockRange({ from: 11_362_579 })
     .addTransaction({
