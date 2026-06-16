@@ -1,6 +1,6 @@
 # Showcase squid 03: events caused by contract calls
 
-This squid captures all calls to the [AAVE Lending Pool v2 contract](https://etherscan.io/address/0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9) and all event logs caused by these calls, including ones emitted by contracts other than the pool contract. See more examples of requesting data with squids on the [showcase page](https://docs.subsquid.io/evm-indexing/configuration/showcase) of Subsquid documentation.
+This squid captures all calls to the [AAVE Lending Pool v2 contract](https://etherscan.io/address/0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9) and all event logs caused by these calls, including ones emitted by contracts other than the pool contract. See more examples of requesting data with squids on the [showcase page](https://docs.sqd.dev/en/sdk) of Subsquid documentation.
 
 Dependencies: Node.js, Docker.
 
