@@ -1,16 +1,18 @@
+import {run} from '@subsquid/batch-processor'
+import {augmentBlock} from '@subsquid/evm-objects'
 import {TypeormDatabase} from '@subsquid/typeorm-store'
 import {CallToAave, EventCausedByAaveCall} from './model'
-import {processor, AAVE_CONTRACT} from './processor'
+import {dataSource, AAVE_CONTRACT} from './processor'
 
-processor.run(new TypeormDatabase({supportHotBlocks: false}), async (ctx) => {
+run(dataSource, new TypeormDatabase({supportHotBlocks: true}), async (ctx) => {
     const calls: Map<string, CallToAave> = new Map()
     const events: EventCausedByAaveCall[] = []
 
-    for (let block of ctx.blocks) {
+    for (let block of ctx.blocks.map(augmentBlock)) {
         for (let txn of block.transactions) {
             calls.set(txn.hash, new CallToAave({
                 id: txn.id,
-                block: block.header.height,
+                block: block.header.number,
                 hash: txn.hash,
                 from: txn.from,
                 to: txn.to,
